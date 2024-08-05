@@ -226,12 +226,6 @@ class _QuizScreenState extends State<QuizScreen> {
                                 ),
                               ));
                         }
-                        // } else {
-                        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        //       content: Text(
-                        //     'Select a Valid Option',
-                        //     style: TextStyle(color: ColorConstants.MainWhite),
-                        //   )));
                       }
                       setState(() {});
                     },

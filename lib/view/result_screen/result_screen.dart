@@ -4,7 +4,7 @@ import 'package:quiz_app/view/Quiz_Screen/quiz_screen.dart';
 import 'package:quiz_app/view/dummydb.dart';
 import 'package:quiz_app/view/category_screen/category_screen.dart';
 
-class ResultScreen extends StatelessWidget {
+class ResultScreen extends StatefulWidget {
   const ResultScreen(
       {super.key,
       required this.rightAnswerCount,
@@ -12,9 +12,15 @@ class ResultScreen extends StatelessWidget {
       required this.skippedQstnCount,
       required this.qstnCount});
   final int rightAnswerCount, wrongAnswerCount, skippedQstnCount, qstnCount;
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
-    double percentage = rightAnswerCount * 100 / qstnCount;
+    double percentage = widget.rightAnswerCount * 100 / widget.qstnCount;
     return Scaffold(
       backgroundColor: ColorConstants.MainBlack,
       body: Center(
@@ -36,15 +42,15 @@ class ResultScreen extends StatelessWidget {
               style: TextStyle(color: ColorConstants.mainGreen, fontSize: 40),
             ),
             Text(
-              'Correct Answers:$rightAnswerCount ',
+              'Correct Answers:${widget.rightAnswerCount} ',
               style: TextStyle(color: ColorConstants.MainWhite, fontSize: 19),
             ),
             Text(
-              'Wrong Answers: $wrongAnswerCount',
+              'Wrong Answers: ${widget.wrongAnswerCount}',
               style: TextStyle(color: ColorConstants.MainWhite, fontSize: 19),
             ),
             Text(
-              'Skipped Questions: $skippedQstnCount',
+              'Skipped Questions: ${widget.skippedQstnCount}',
               style: TextStyle(color: ColorConstants.MainWhite, fontSize: 19),
             ),
             SizedBox(
@@ -82,6 +88,8 @@ class ResultScreen extends StatelessWidget {
                                               DummyDb.currentQuizIndex!],
                                     ),
                                   ));
+
+                              setState(() {});
                             },
                             child: Text(
                               'Restart',
@@ -100,6 +108,8 @@ class ResultScreen extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (context) => CategoryScreen(),
                                   ));
+
+                              setState(() {});
                             },
                             child: Text('Home Screen',
                                 style: TextStyle(
